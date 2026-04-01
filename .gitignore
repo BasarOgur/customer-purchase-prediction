@@ -23,4 +23,5 @@ Thumbs.db
 *.pkl
 *.joblib
 
-
+# Data files (download via Kaggle API instead)
+data/*.csv

@@ -20,14 +20,33 @@ Build a realistic ML pipeline that:
 - Binary target: Did the session result in a purchase?
 - **Imbalanced**: 84.5% No Purchase, 15.5% Purchase
 
-📥 Download from: https://www.kaggle.com/datasets/imakash3011/online-shoppers-purchasing-intention-dataset
+### Download the Dataset
+
+⚠️ **You need to set up your Kaggle API key before running the download script.**
+
+**Option 1: Automatic Download (Recommended)**
+
+1. Set up your Kaggle API credentials:
+   - Go to [kaggle.com](https://www.kaggle.com) → Account → Create New API Token
+   - This downloads `kaggle.json`
+   - Place it in `~/.kaggle/kaggle.json` (Linux/Mac) or `C:\Users\<username>\.kaggle\kaggle.json` (Windows)
+
+2. Run the download script:
+```bash
+python download_data.py
+```
+
+**Option 2: Manual Download**
+
+1. Download from: https://www.kaggle.com/datasets/imakash3011/online-shoppers-purchasing-intention-dataset
+2. Place `online_shoppers_intention.csv` in the `data/` folder
 
 ## Project Structure
 
 ```
 customer-purchase-prediction/
 ├── data/
-│   └── online_shoppers_intention.csv      # Raw dataset
+│   └── online_shoppers_intention.csv      # Raw dataset (download via Kaggle)
 ├── notebooks/
 │   └── 01_eda.ipynb                       # Exploratory Data Analysis (interactive)
 ├── src/
@@ -37,6 +56,7 @@ customer-purchase-prediction/
 │   ├── models.py                          # Train 4 models
 │   └── evaluation.py                      # Evaluate & compare models
 ├── main.py                                # Entry point (run this!)
+├── download_data.py                       # Download dataset from Kaggle
 ├── requirements.txt                       # Dependencies
 ├── README.md                              # This file
 └── .gitignore                             # Git ignore rules
@@ -44,18 +64,34 @@ customer-purchase-prediction/
 
 ## Quick Start
 
-### 1. Install Dependencies
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/customer-purchase-prediction.git
+cd customer-purchase-prediction
+```
+
+### 2. Install Dependencies
 
 ```bash
 # Create virtual environment (recommended)
 python -m venv venv
-venv\Scripts\activate
+venv\Scripts\activate    # Windows
+# source venv/bin/activate  # Linux/Mac
 
 # Install packages
 pip install -r requirements.txt
 ```
 
-### 2. Run the Complete Pipeline
+### 3. Download the Dataset
+
+Make sure your Kaggle API credentials are configured (see Dataset section above).
+
+```bash
+python download_data.py
+```
+
+### 4. Run the Complete Pipeline
 
 From the project root directory:
 
@@ -73,7 +109,7 @@ This single command will:
 
 **Expected runtime**: 5-10 seconds
 
-### 3. Explore the EDA Notebook (Optional)
+### 5. Explore the EDA Notebook (Optional)
 
 For interactive data exploration:
 
@@ -299,8 +335,21 @@ pip install scikit-learn pandas numpy matplotlib seaborn xgboost
 ```
 
 ### Dataset not found
-Download from: https://www.kaggle.com/datasets/imakash3011/online-shoppers-purchasing-intention-dataset
-Place `online_shoppers_intention.csv` in the `data/` folder
+Run the download script:
+```bash
+python download_data.py
+```
+
+Or manually download from: https://www.kaggle.com/datasets/imakash3011/online-shoppers-purchasing-intention-dataset
+and place `online_shoppers_intention.csv` in the `data/` folder.
+
+### Kaggle API error
+Make sure you have:
+1. Created a Kaggle account
+2. Generated an API token from Kaggle → Account → Create New API Token
+3. Placed `kaggle.json` in the correct location:
+   - Windows: `C:\Users\<username>\.kaggle\kaggle.json`
+   - Linux/Mac: `~/.kaggle/kaggle.json`
 
 ### Neural Network takes long to train
 Normal! It iterates through data 50-500 times (epochs).
